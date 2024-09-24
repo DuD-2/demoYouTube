@@ -5,6 +5,7 @@ import com.rangers.demo.dto.RefreshTokenDto;
 import com.rangers.demo.dto.UserCredentialsDto;
 import com.rangers.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ public class AuthController {
             JwtAuthenticationDto jwtAuthenticationDto = userService.singIn(userCredentialsDto);
             return ResponseEntity.ok(jwtAuthenticationDto);
         } catch (AuthenticationException e) {
-            throw new RuntimeException("Authentication failed" + e.getMessage());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
     }
 
