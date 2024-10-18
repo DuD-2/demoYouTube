@@ -4,6 +4,7 @@ import com.rangers.demo.dto.JwtAuthenticationDto;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.Setter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 @Component
+@Setter
 public class JwtService {
 
     private static final Logger LOGGER = LogManager.getLogger(JwtService.class);
