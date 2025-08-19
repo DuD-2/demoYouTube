@@ -20,10 +20,10 @@ import javax.naming.AuthenticationException;
 public class AuthController {
     private final UserService userService;
 
-    @PostMapping("/sing-in")
-    public ResponseEntity<JwtAuthenticationDto> singIn(@RequestBody UserCredentialsDto userCredentialsDto) {
+    @PostMapping("/sign-in")
+    public ResponseEntity<JwtAuthenticationDto> signIn(@RequestBody UserCredentialsDto userCredentialsDto) {
         try {
-            JwtAuthenticationDto jwtAuthenticationDto = userService.singIn(userCredentialsDto);
+            JwtAuthenticationDto jwtAuthenticationDto = userService.signIn(userCredentialsDto);
             return ResponseEntity.ok(jwtAuthenticationDto);
         } catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
