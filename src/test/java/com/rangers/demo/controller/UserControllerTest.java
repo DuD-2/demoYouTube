@@ -33,7 +33,7 @@ class UserControllerTest {
 
         String loginJson = objectMapper.writeValueAsString(userCredentialsDto);
 
-        String tokens = mockMvc.perform(MockMvcRequestBuilders.post("/auth/sing-in")
+        String tokens = mockMvc.perform(MockMvcRequestBuilders.post("/auth/sign-in")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(loginJson))
                 .andReturn()

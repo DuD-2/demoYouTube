@@ -32,14 +32,14 @@ class AuthControllerTest {
 
     @Test
     @Sql(scripts = {"/data/cleanUp.sql", "/data/insertData.sql"})
-    void singInTest() throws Exception {
+    void signInTest() throws Exception {
         UserCredentialsDto userCredentialsDto = new UserCredentialsDto();
         userCredentialsDto.setEmail("test@gmail.com");
         userCredentialsDto.setPassword("12345");
 
         String userJson = objectMapper.writeValueAsString(userCredentialsDto);
 
-        String tokenJson = mockMvc.perform(MockMvcRequestBuilders.post("/auth/sing-in")
+        String tokenJson = mockMvc.perform(MockMvcRequestBuilders.post("/auth/sign-in")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userJson))
                 .andExpect(status().isOk())
@@ -54,14 +54,14 @@ class AuthControllerTest {
 
     @Test
     @Sql(scripts = {"/data/cleanUp.sql", "/data/insertData.sql"})
-    void singInNegativeTest() throws Exception {
+    void signInNegativeTest() throws Exception {
         UserCredentialsDto userCredentialsDto = new UserCredentialsDto();
         userCredentialsDto.setEmail("test@gmail.com");
         userCredentialsDto.setPassword("125555");
 
         String userJson = objectMapper.writeValueAsString(userCredentialsDto);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/auth/sing-in")
+        mockMvc.perform(MockMvcRequestBuilders.post("/auth/sign-in")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userJson))
                 .andExpect(status().isUnauthorized());
@@ -76,7 +76,7 @@ class AuthControllerTest {
 
         String userJson = objectMapper.writeValueAsString(userCredentialsDto);
 
-        String tokenJson = mockMvc.perform(MockMvcRequestBuilders.post("/auth/sing-in")
+        String tokenJson = mockMvc.perform(MockMvcRequestBuilders.post("/auth/sign-in")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userJson))
                 .andExpect(status().isOk())
